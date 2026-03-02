@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HL Holdings Sales Demo - VOC Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        header { background-color: #4CAF50; color: white; text-align: center; padding: 1rem; }
+        main { padding: 2rem; }
+        .kpi { display: flex; justify-content: space-around; margin-top: 20px; }
+        .kpi div { padding: 20px; border: 1px solid #ccc; border-radius: 8px; }
+        #slack-integration { padding: 20px; margin-top: 20px; border: 1px solid #ccc; border-radius: 8px; }
+        footer { text-align: center; padding: 1rem; background-color: #f1f1f1; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>HL Holdings VOC Dashboard</h1>
+    </header>
+    <main>
+        <div class="kpi">
+            <div>
+                <h2>Customer Satisfaction</h2>
+                <p id="customer-satisfaction">Loading...</p>
+            </div>
+            <div>
+                <h2>Net Promoter Score</h2>
+                <p id="nps">Loading...</p>
+            </div>
+        </div>
+        <div id="slack-integration">
+            <h2>Slack Integration</h2>
+            <button id="send-message">Send Message to Slack</button>
+        </div>
+        <div id="canvas-notes">
+            <h2>Canvas Notes</h2>
+            <textarea id="notes" rows="4" cols="50" placeholder="Add your notes here..."></textarea>
+        </div>
+        <div id="customer-hotline">
+            <h2>Customer Hotline</h2>
+            <p>Call us at: (555) 555-5555</p>
+        </div>
+        <div id="real-time-viewer">
+            <h2>Real-Time Message Viewer</h2>
+            <ul id="messages"></ul>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2026 HL Holdings</p>
+    </footer>
+    <script>
+        // This is a mock function to simulate fetching KPIs
+        function fetchKPI() {
+            // Simulating an API call
+            setTimeout(() => {
+                document.getElementById('customer-satisfaction').innerText = '85%';
+                document.getElementById('nps').innerText = '72';
+            }, 1000);
+        }
+
+        // Slack integration function
+        document.getElementById('send-message').onclick = function() {
+            // Simulating sending a message to Slack
+            alert('Message sent to Slack!');
+        };
+
+        // Real-time message viewer
+        const messageList = document.getElementById('messages');
+        setInterval(() => {
+            const li = document.createElement('li');
+            li.textContent = 'New message at ' + new Date().toLocaleTimeString();
+            messageList.appendChild(li);
+        }, 5000);
+
+        // Initial KPI fetch
+        fetchKPI();
+    </script>
+</body>
+</html>
